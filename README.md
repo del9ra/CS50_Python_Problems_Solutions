@@ -1,2 +1,2 @@
-# CS50_py
+# CS50_Introduction_to_python
 problems
