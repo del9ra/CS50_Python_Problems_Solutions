@@ -1,19 +1,30 @@
-while True:
+def main():
+    s = input("Fraction: ")
+    print(gauge(convert(s)))
+
+def convert(fraction):
     try:
-        x, y = input("Fraction: ").split("/")
+        x, y = fraction.split("/")
         x, y = int(x), int(y)
-        fuel = 0
-        if (x>y):
-            continue
-        else:
-            fuel = round(x/y*100)
-    except (ValueError, ZeroDivisionError):
-        pass
+        if y == 0:
+            raise ZeroDivisionError("Error 1")
+        if x>y:
+            raise ValueError("Error 2")
+    except ValueError:
+        raise ValueError("Error 2")
+    fuel = int((x/y)*100)
+    return fuel
+
+def gauge(percentage):
+    if percentage<=1:
+        empty = "E"
+        return empty
+    elif percentage>=99:
+        full = "F"
+        return full
     else:
-        break
-if fuel<=1:
-    print("E")
-elif fuel>=99:
-    print("F")
-else:
-    print(f'{fuel}%')
+        Z = f'{percentage}%'
+        return Z
+
+if __name__ == "__main__":
+    main()
